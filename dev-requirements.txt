@@ -9,4 +9,5 @@ pytest==7.0.1
 pytest-cov==2.10.1
 pytest-json==0.4.0
 beautifulsoup4==4.12.0
+lxml==4.9.2
 git+https://github.com/betrybe/pytest-dependency
