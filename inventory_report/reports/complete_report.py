@@ -6,7 +6,7 @@ class CompleteReport(SimpleReport):
     def generate(cls, products):
         products_by_company = {}
         products_by_company_str = ""
-        
+
         for product in products:
             if product["nome_da_empresa"] in products_by_company:
                 products_by_company[product["nome_da_empresa"]] += 1
