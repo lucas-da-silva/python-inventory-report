@@ -13,8 +13,8 @@ class Inventory:
         elif path.endswith(".csv"):
             products = CsvImporter.import_data(path)
         else:
-            products = XmlImporter.import_data(path, type)
+            products = XmlImporter.import_data(path)
         if type == "simples":
             return SimpleReport.generate(products)
-        elif type == "completo":
+        else:
             return CompleteReport.generate(products)
