@@ -11,6 +11,13 @@ def test_decorar_relatorio():
     company_with_more_products = "Coca-Cola Company"
     oldest_date = "2020-01-01"
     nearest_expiration_date = "2024-12-31"
+    green_texts = [
+        "Data de fabricação mais antiga:",
+        "Data de validade mais próxima:",
+        "Empresa com mais produtos:",
+    ]
+    blue_texts = [oldest_date, nearest_expiration_date]
+    red_texts = [company_with_more_products]
     products_list = [
         {
             "id": 1,
@@ -22,11 +29,12 @@ def test_decorar_relatorio():
             "instrucoes_de_armazenamento": "Manter em local seco",
         }
     ]
+
     report = ColoredReport(SimpleReport).generate(products_list)
 
-    assert f"{GREEN}Data de fabricação mais antiga:{RESET}" in report
-    assert f"{GREEN}Data de validade mais próxima:{RESET}" in report
-    assert f"{GREEN}Empresa com mais produtos:{RESET}" in report
-    assert f"{BLUE}{oldest_date}{RESET}" in report
-    assert f"{BLUE}{nearest_expiration_date}{RESET}" in report
-    assert f"{RED}{company_with_more_products}{RESET}" in report
+    for text in green_texts:
+        assert f"{GREEN}{text}{RESET}" in report
+    for text in blue_texts:
+        assert f"{BLUE}{text}{RESET}" in report
+    for text in red_texts:
+        assert f"{RED}{text}{RESET}" in report
