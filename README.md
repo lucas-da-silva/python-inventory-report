@@ -49,3 +49,29 @@ $PROJECT_ROOT
 |   # Testes 
 └── tests
 ```
+
+## Como utilizar
+
+Criando e ativando o ambiente virtual:
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+```
+
+Instalando as dependências e o projeto no ambiente virtual
+
+```bash
+python3 -m pip install -r dev-requirements.txt && pip install .
+```
+
+Para gerar o relatório de arquivo, use o seguinte comando:
+
+```bash
+python3 inventory_report/main.py local_do_arquivo completo 
+```
+
+Exemplo:
+
+```bash
+python3 inventory_report/main.py inventory_report/data/inventory.csv completo
+```
