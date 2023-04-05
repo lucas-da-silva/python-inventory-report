@@ -52,6 +52,8 @@ $PROJECT_ROOT
 
 ## Como utilizar
 
+Pré-requisitos: [Python3](https://www.python.org/downloads/)
+
 Criando e ativando o ambiente virtual:
 
 ```bash
