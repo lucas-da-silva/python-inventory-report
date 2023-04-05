@@ -10,7 +10,7 @@ Foi utilizando no desenvolvimento os conceitos de Orientação a Objetos em Pyth
 - Leitura e escrita de arquivos (XML, CSV, JSON)
 - Formatação dos dados para gerar relatórios
 
-![Relatório](images/img1.png)
+![Relatório](/.images/img1.png)
 
 ## Tecnologias
 
