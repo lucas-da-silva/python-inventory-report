@@ -17,7 +17,7 @@ Foi utilizando no desenvolvimento os conceitos de Orientação a Objetos em Pyth
 - [Python](https://www.python.org/) - Linguagem de programação focada em desenvolvimento rápido e integração de sistemas eficazmente
 - [Pytest](https://docs.pytest.org/en/7.2.x/) - Framework que facilita a escrita de testes pequenos e legíveis
 
-## Project structure
+## Estrutura do projeto
 
 ```
 $PROJECT_ROOT
