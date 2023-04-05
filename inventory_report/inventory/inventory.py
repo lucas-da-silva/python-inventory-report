@@ -1,47 +1,20 @@
-import csv
-import json
-from bs4 import BeautifulSoup
-
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
     @classmethod
     def import_data(cls, path, type):
-        with open(path, "r") as file:
-            if path.endswith(".json"):
-                products = json.load(file)
-            elif path.endswith(".csv"):
-                products = csv.DictReader(file, delimiter=",")
-            else:
-                products_xml = BeautifulSoup(file, "xml").find_all("record")
-                products = [
-                    {
-                        "id": product.find("id").text,
-                        "nome_do_produto": product.find(
-                            "nome_do_produto"
-                        ).text,
-                        "nome_da_empresa": product.find(
-                            "nome_da_empresa"
-                        ).text,
-                        "data_de_fabricacao": product.find(
-                            "data_de_fabricacao"
-                        ).text,
-                        "data_de_validade": product.find(
-                            "data_de_validade"
-                        ).text,
-                        "numero_de_serie": product.find(
-                            "numero_de_serie"
-                        ).text,
-                        "instrucoes_de_armazenamento": product.find(
-                            "instrucoes_de_armazenamento"
-                        ).text,
-                    }
-                    for product in products_xml
-                ]
-            formatted_products = [product for product in products]
+        if path.endswith(".json"):
+            products = JsonImporter.import_data(path)
+        elif path.endswith(".csv"):
+            products = CsvImporter.import_data(path)
+        else:
+            products = XmlImporter.import_data(path, type)
         if type == "simples":
-            return SimpleReport.generate(formatted_products)
+            return SimpleReport.generate(products)
         elif type == "completo":
-            return CompleteReport.generate(formatted_products)
+            return CompleteReport.generate(products)
